@@ -4,15 +4,19 @@ import {addToCart} from './actions/index'
 import { Component } from 'react';
 class App extends Component {
   state = {
-    product: {id:1, price:1000, name:'dell lap', qty:2},
+    product: [{id:1, price:1000, name:'dell lap', qty:2}],
     total_price : 0
   }
   render(){
     return (
     <div className="App">
       <button onClick={()=>{
+        this.setState({
+          product: [...this.state.product,{id:2, price:1000, name:'dell lap', qty:2}],
+          total_price:0
+        })
         console.log(this.state.product)
-        this.props.add_to_cart(this.state.product)
+        console.log(this.props.add_to_cart(this.state.product))
       }}>Appear action in console</button>
     </div>
   );
